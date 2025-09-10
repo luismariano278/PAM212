@@ -1,0 +1,3 @@
+console.log("Hello world") //se muestra en la consola
+
+document.write("hello world") // se muestra en la pantalla
