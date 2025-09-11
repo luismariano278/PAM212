@@ -1,30 +1,17 @@
-//tipos de datos
-"Hello world"//string
-'Hello world'//string
+// estoy creando variables 
+var nameuser= "john" 
+let lastname = "carter"
 
-100000 // number
--2.3
+//reasignando el valor de la variable nameuser
 
-//boolean
-true 
-false
+nameuser = 'pepe';
 
+// cualquiercosas
 
-// array 
-['joe', 'ryan', 'martha']
-[1, 2, 3]
-[true, false, true, false]
+const PI = 3.1415;
 
-// object
+console.log(PI)
 
-'ryan'
-70.4
-14 true 
+// Username
+let nombreDePersona = 'gordon';
 
-{
-    username: 'ryan',
-    score: 70.4,
-    hours: 14,
-    professional: true
-    
-}
