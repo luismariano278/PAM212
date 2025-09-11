@@ -22,3 +22,17 @@ if (score > 15) {
 else {
     console.log('necesitas ver el tutorial')
 }
+
+let typeCard = 'Debit Card';
+switch(typeCard){
+case 'Debit card':
+    console.log('Esto es una tarjeta de debito')
+        break;
+
+case 'Credit Card':
+    console.log ('Esto es una tarjeta de Credito');
+    break;
+
+default: 
+console.log ('no card');
+}
