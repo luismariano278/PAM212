@@ -1,6 +1,6 @@
-//operadores 
-let numberOne =  100;
-let numbertwo =  500;
+//operadores  2
+let passworddB = 'yoyoyo'
+let input = 'yoyoyo'
+let result = input == passworddB;
 
-let result = numberOne != numbertwo;
 console.log(result);
