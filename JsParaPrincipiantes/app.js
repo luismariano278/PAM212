@@ -1,17 +1,6 @@
-// estoy creando variables 
-var nameuser= "john" 
-let lastname = "carter"
+//operadores 
+let numberOne =  100;
+let numbertwo =  500;
 
-//reasignando el valor de la variable nameuser
-
-nameuser = 'pepe';
-
-// cualquiercosas
-
-const PI = 3.1415;
-
-console.log(PI)
-
-// Username
-let nombreDePersona = 'gordon';
-
+let result = numberOne != numbertwo;
+console.log(result);
