@@ -11,3 +11,10 @@ const cuadradoo = numero => numero * numero; // funcion flecha
 console.log(cuadradoo(5));
 console.log(cuadradoo(6));
 console.log(cuadradoo(7));
+
+//Ejercicio 3
+console.log("ejercicio 3");
+const SaludoPersonalizado = (nombre,edad) => 
+    "Hola, me llamo " + nombre + " y tengo " + edad + " años.";
+
+ console.log(SaludoPersonalizado("Mariano","19"))
