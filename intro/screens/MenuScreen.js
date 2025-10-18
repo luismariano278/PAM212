@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Text, StyleSheet, View } from 'react-native'
 import ContadorScreen from './ContadorScreen';
 import BotonesScreen from './BotonesScreen';
-import { Button } from 'react-native-web';
-import TextInputScreen from './TextInputScreen';
+import { Button } from 'react-native';
+import TextInputScreen from './TextScreen';
 import ImageScreen from './ImageScreen';
 import ScrollScreen from './ScrollScreen';
 import ActivityScreen from './ActivityScreen';
@@ -38,7 +38,7 @@ export default function MenuScreen () {
             default: 
                 return (
                     <View>
-                        <Text> Menu de Practicas </Text>
+                        <Text style={styles.header}> Menu de Prácticas </Text>
                         <Button onPress={() => setScreen('contador')} title="Pract: Contador"/>
                         <Button onPress={() => setScreen('botones')} title="Pract: Botones"/>
                         <Button onPress={() => setScreen('TextInput')} title="Pract: TextInput"/>
@@ -47,10 +47,35 @@ export default function MenuScreen () {
                         <Button onPress={() => setScreen('activity')} title="Pract: ActivityIndicator"/>
                         <Button onPress={() => setScreen('modal')} title="Pract: Modal"/>
                         <Button onPress={() => setScreen('bottomsheet')} title="Pract: BottomSheet"/>
-                        <Button onPress={() => setScreen('flat')} title="Pract: FlatList"/>
+                        <Button onPress={() => setScreen('flatlist')} title="Pract: FlatList"/>
                     </View>
                 )
 
     }
 }
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#ffffffff", // Color de fondo de toda la pantalla
+    alignItems: "center",        // Centra horizontalmente los elementos dentro del container
+    justifyContent: "flex-start",// Alinea verticalmente los elementos desde arriba
+    padding: 20,                 // Espacio interno alrededor del contenido
+    paddingTop: 50,              // Espacio extra en la parte superior
+  },
+  header: {
+    fontSize: 22,                // Tamaño de letra del encabezado
+    fontWeight: "bold",          // Pone el texto en negrita
+    marginBottom: 20,            // Espacio debajo del encabezado
+    color: "#333",               // Color del texto
+    textAlign: "center",         // Centra el texto horizontalmente
+  },
+  title: {
+    fontWeight: "bold",          // Título de cada sección en negrita
+    marginTop: 20,               // Espacio arriba del título
+    marginBottom: 5,             // Espacio debajo del título
+    color: "#333",               // Color del texto
+  },
+  text: {
+    color: "white",              // Color del texto dentro de los botones
+    fontWeight: "600", 
+}
+});
