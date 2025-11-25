@@ -16,7 +16,7 @@ const { height } = Dimensions.get("window");
 export default function SplashScreenPro() {
   const [showMain, setShowMain] = useState(false); // controla la pantalla principal
 
-  // Animaciones Splash
+  
   const fadeLogo = useRef(new Animated.Value(0)).current;
   const scaleLogo = useRef(new Animated.Value(0.5)).current;
   const rotateLogo = useRef(new Animated.Value(0)).current;
@@ -74,7 +74,7 @@ export default function SplashScreenPro() {
   if (showMain) {
     return (
       <ImageBackground
-        source={require("../assets/wallpaper3.png")}
+        source={require("../assets/wallpaper3.jpg")}
         style={styles.background}
         resizeMode="cover" // 'cover' hace que la imagen llene toda la pantalla
       >

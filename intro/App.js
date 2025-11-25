@@ -1,9 +1,9 @@
-import MenuScreen from './screens/MenuScreen';
+import ImageScreen from './screens/ImageScreen';
 
 export default function App() {
 
   return (
-     <MenuScreen></MenuScreen>
+     <ImageScreen></ImageScreen>
   );
 }
 
