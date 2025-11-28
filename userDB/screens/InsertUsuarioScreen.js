@@ -20,6 +20,11 @@ export default function UsuarioView() {
     const [nombre, setNombre] = useState('');
     const [loading, setLoading] = useState(true);
     const [guardando, setGuardando] = useState(false);
+    
+    const [modalVisible, setModalVisible] = useState(false);
+    const [nuevoNombre, setNuevoNombre] = useState('');
+    const [usuarioEditando, setUsuarioEditando] = useState(null);
+
 
     const cargarUsuarios = useCallback(async () => {
         try {
@@ -61,6 +66,35 @@ export default function UsuarioView() {
         }
     };
 
+     async function eliminarUsuarios(id) {
+        try{
+           const usuarioEliminado = await controller.eliminarUsuario(id);
+            Alert.alert('Usuario Eliminado', `El usuario con ID: ${id} ha sido eliminado.`);
+        }catch (error) {
+            Alert.alert('Error', error.message);
+        }finally {
+            cargarUsuarios();
+        }}
+
+    function abrirModalEditar(user) {
+        setUsuarioEditando(user);
+        setNuevoNombre(user.nombre);
+        setModalVisible(true);
+    }
+
+    async function guardarCambios() {
+        try {
+            await controller.modificarUsuario(usuarioEditando.id, nuevoNombre.trim());
+            Alert.alert("Usuario Modificado", `Nuevo nombre: ${nuevoNombre}`);
+        } catch (err) {
+            Alert.alert("Error", err.message);
+        } finally {
+            setModalVisible(false);
+            cargarUsuarios();
+        }
+    }
+
+
     const renderUsuario = ({ item, index }) => (
         <View style={styles.userItem}>
             <View style={styles.userNumber}>
@@ -78,6 +112,12 @@ export default function UsuarioView() {
                         day: 'numeric'
                     })}
                 </Text>
+                <TouchableOpacity onPress={() => eliminarUsuarios(item.id)}>
+                    <Text style={styles.reloadText}>Eliminar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => abrirModalEditar(item)}>
+                    <Text style={styles.reloadText}>Modificar</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -119,15 +159,42 @@ export default function UsuarioView() {
             {loading ? (
                 <ActivityIndicator size="large" color="#007AFF" style={{ marginTop: 20 }} />
             ) : (
+                
                 <FlatList
                     data={usuarios}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={renderUsuario}
                     style={{ marginTop: 10 }}
+                    
                 />
+                
             )}
 
+        {modalVisible && (
+    <View style={{
+        position:'absolute', top:0, left:0, right:0, bottom:0,
+        backgroundColor:'rgba(0,0,0,0.5)', justifyContent:'center',
+        padding:20
+    }}>
+        <View style={{backgroundColor:'white', padding:20, borderRadius:10}}>
+            <Text>Modificar Usuario</Text>
+
+            <TextInput
+                value={nuevoNombre}
+                onChangeText={setNuevoNombre}
+                style={{borderWidth:1, padding:8, marginVertical:10}}
+            />
+            
+            <TouchableOpacity onPress={guardarCambios}>
+                <Text>Guardar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
+                <Text>Cancelar</Text>
+            </TouchableOpacity>
         </View>
+    </View>
+    )}
+    </View>
     );
 }
 

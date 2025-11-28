@@ -46,6 +46,18 @@ export class UsuarioController {
             throw error;
         }
     }
+    // Eliminar usuario por ID
+    async eliminarUsuario(id){
+        const result = await DatabaseService.dlt(id);
+        this.notifyListeners();
+        return result;
+    }
+       // Modificar
+    async modificarUsuario(id, nombre){
+        const result = await DatabaseService.update(id, nombre);
+        this.notifyListeners();
+        return result;
+    }
 
     //   Sistema de Observadores (MVC)
 
